@@ -84,7 +84,6 @@ export function TimelineNote({
       <ExpandProvider>
         <Card
           as={LinkBox}
-          variant={variant}
           ref={registerIntersectionEntity ? ref : undefined}
           data-event-id={event.id}
           {...props}

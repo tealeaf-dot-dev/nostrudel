@@ -1,5 +1,5 @@
 import { memo, useState } from "react";
-import { Alert, AlertIcon, Button, ButtonGroup, Flex, IconButton, Link, Spacer, useDisclosure } from "@chakra-ui/react";
+import { Alert, AlertIcon, Button, ButtonGroup, Flex, IconButton, Link, Spacer, useDisclosure, useColorMode } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { ThreadItem } from "applesauce-core/queries";
 
@@ -64,6 +64,7 @@ function ThreadPost({ post, initShowReplies, focusId, level = -1 }: ThreadItemPr
   );
 
   const colorProps = useThreadColorLevelProps(level, focusId === post.event.id);
+  const { colorMode } = useColorMode();
 
   const header = (
     <Flex gap="2" alignItems="center">
@@ -142,6 +143,7 @@ function ThreadPost({ post, initShowReplies, focusId, level = -1 }: ThreadItemPr
         borderWidth=".1rem .1rem .1rem .35rem"
         {...colorProps}
         ref={ref}
+        background={colorMode === 'dark' ? 'gray.800' : '#fff'}
       >
         {header}
         {expanded.isOpen && (

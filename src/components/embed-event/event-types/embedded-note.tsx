@@ -1,5 +1,5 @@
 import { MouseEventHandler, useCallback } from "react";
-import { Card, CardProps, Flex, LinkBox, Spacer } from "@chakra-ui/react";
+import { Card, CardProps, Flex, LinkBox, Spacer, useColorMode } from "@chakra-ui/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useObservable } from "applesauce-react/hooks";
 
@@ -23,6 +23,7 @@ export default function EmbeddedNote({ event, ...props }: Omit<CardProps, "child
   const enableDrawer = useObservable(localSettings.enableNoteThreadDrawer);
   const navigate = enableDrawer ? useNavigateInDrawer() : useNavigate();
   const to = `/n/${getSharableEventAddress(event)}`;
+  const { colorMode } = useColorMode();
 
   const handleClick = useCallback<MouseEventHandler>(
     (e) => {
@@ -35,7 +36,7 @@ export default function EmbeddedNote({ event, ...props }: Omit<CardProps, "child
 
   return (
     <TrustProvider event={event}>
-      <Card as={LinkBox} {...props}>
+      <Card as={LinkBox} {...props} bg={colorMode === 'dark' ? 'gray.700' : '#f7f7f7'} padding="5" margin="5">
         <Flex p="2" gap="2" alignItems="center">
           <UserAvatarLink pubkey={event.pubkey} size="sm" />
           <UserLink pubkey={event.pubkey} fontWeight="bold" isTruncated fontSize="lg" />
