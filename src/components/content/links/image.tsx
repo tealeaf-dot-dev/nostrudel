@@ -180,7 +180,7 @@ export function renderImageUrl(match: URL) {
       actions={hash ? <VerifyImageButton src={match} original={hash} /> : undefined}
       hideOnDefaultOpen={!hash}
     >
-      <EmbeddedImage src={match.toString()} imageProps={{ maxH: ["initial", "35vh"] }} />
+      <EmbeddedImage src={match.toString()} imageProps={{ maxH: ["initial", "50vh"] }} />
     </ExpandableEmbed>
   );
 }
