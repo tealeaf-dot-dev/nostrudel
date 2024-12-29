@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Flex, Spacer } from "@chakra-ui/react";
+import { Box, Container, Flex, Spacer, useColorMode } from "@chakra-ui/react";
 import { useObservable } from "applesauce-react/hooks";
 
 import { ErrorBoundary } from "../error-boundary";
@@ -13,16 +13,16 @@ import GhostSideBar from "./ghost/sidebar";
 export default function Layout({ children }: { children: React.ReactNode }) {
   const isMobile = useBreakpointValue({ base: true, md: false });
   const isGhost = useObservable(accountService.isGhost);
+  const { colorMode } = useColorMode();
 
   return (
     <>
       <ReloadPrompt mb="2" />
-      <Flex direction={{ base: "column", md: "row" }} minH="100vh">
-        <Spacer display={["none", null, "block"]} />
+      <Flex direction={{ base: "column", md: "row" }} gap={{md: "30", xl: "100"}} padding={{base: "3", md: "5"}} minH="100vh" background={colorMode === 'light' ? '#f7f7f7' : ''}>
         {!isMobile && <DesktopSideNav position="sticky" top="0" flexShrink={0} />}
         <Container
           // set base to "md" so that when layout switches to column it is full width
-          size={{ base: "md", md: "md", lg: "lg", xl: "xl", "2xl": "2xl" }}
+          size={{ base: "md", md: "md", lg: "lg", xl: "xl", "2xl": "xl" }}
           display="flex"
           flexGrow={1}
           padding="0"
@@ -30,6 +30,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           mx="0"
           pb={isMobile ? "14" : 0}
           minH="50vh"
+          maxWidth="600px"
           overflow="hidden"
         >
           <ErrorBoundary>{children}</ErrorBoundary>
@@ -45,7 +46,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             zIndex={10}
           />
         )}
-        <Spacer display={["none", null, "block"]} />
       </Flex>
     </>
   );

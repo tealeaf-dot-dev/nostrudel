@@ -87,6 +87,7 @@ export function TimelineNote({
           ref={registerIntersectionEntity ? ref : undefined}
           data-event-id={event.id}
           {...props}
+          padding="5"
         >
           {clickable && (
             <HoverLinkOverlay
@@ -95,7 +96,7 @@ export function TimelineNote({
               onClick={() => singleEventService.handleEvent(event)}
             />
           )}
-          <CardHeader p="2">
+          <CardHeader p="2" marginBottom="5" paddingBottom="5" borderBottomWidth="1px" borderBottomColor="whiteAlpha.80" borderBottomStyle="solid">
             <Flex flex="1" gap="2" alignItems="center">
               <UserAvatarLink pubkey={event.pubkey} size="sm" />
               <UserLink pubkey={event.pubkey} isTruncated fontWeight="bold" fontSize="lg" />

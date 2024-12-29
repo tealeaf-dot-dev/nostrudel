@@ -70,7 +70,7 @@ export default function DetailsTabs({ post }: { post: ThreadItem }) {
       name: `Replies (${post.replies.size})`,
       visible: true,
       element: (
-        <TabPanel key="replies" display="flex" flexDirection="column" gap="2" py="2" pr="0" pl={{ base: 2, md: 4 }}>
+        <TabPanel key="replies" display="flex" flexDirection="column" gap="5" py="2" pr="0" pl={{ base: 2, md: 4 }}>
           {repliesByDate(post).map((child) => (
             <ThreadPost key={child.event.id} post={child} focusId={undefined} level={0} />
           ))}
@@ -168,6 +168,7 @@ export default function DetailsTabs({ post }: { post: ThreadItem }) {
       colorScheme="primary"
       variant="solid-rounded"
       size="sm"
+      gap="5"
     >
       <HiddenScrollbarTabList px="2" gap="2" whiteSpace="pre" overflowX="auto">
         {tabs

@@ -44,7 +44,7 @@ export default function DesktopSideNav(props: Omit<FlexProps, "children">) {
     >
       <Flex direction="column" flexShrink={0} gap="2">
         {showBrandLogo && (
-          <Flex gap="2" alignItems="center" position="relative" my="2">
+          <Flex gap="2" alignItems="center" position="relative" marginBottom="5">
             <Avatar src="/apple-touch-icon.png" size="md" />
             <Heading size="md">
               <LinkOverlay as={RouterLink} to="/">

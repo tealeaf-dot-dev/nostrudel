@@ -137,7 +137,7 @@ function ThreadPost({ post, initShowReplies, focusId, level = -1 }: ThreadItemPr
     <>
       <Flex
         direction="column"
-        gap="2"
+        gap="5"
         p="2"
         borderRadius="md"
         borderWidth=".1rem .1rem .1rem .35rem"
@@ -161,7 +161,7 @@ function ThreadPost({ post, initShowReplies, focusId, level = -1 }: ThreadItemPr
       ) : (
         expanded.isOpen &&
         post.replies.size > 0 && (
-          <Flex direction="column" gap="2" pl={{ base: 2, md: 4 }}>
+          <Flex direction="column" gap="5" pl={{ base: 2, md: 4 }}>
             {repliesByDate(post).map((child) => (
               <ThreadPost key={child.event.id} post={child} focusId={focusId} level={level + 1} />
             ))}

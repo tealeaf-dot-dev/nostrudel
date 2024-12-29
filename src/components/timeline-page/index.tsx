@@ -58,7 +58,7 @@ export default function TimelinePage({
   };
   return (
     <IntersectionObserverProvider callback={callback}>
-      <Flex direction="column" gap="2" {...props}>
+      <Flex direction="column" gap="10" {...props}>
         {header}
         {renderTimeline()}
         <TimelineActionAndStatus timeline={loader} />
