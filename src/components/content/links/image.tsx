@@ -98,7 +98,7 @@ export function EmbeddedImage({ src, event, imageProps, ...props }: EmbeddedImag
   // this is so that the <a> element can act like a block without being full width
   return (
     <div>
-      <Link href={src} isExternal onClick={handleClick} display="inline-block" {...props}>
+      <Link href={src} isExternal onClick={handleClick} display="inline-block" {...props} marginTop="5" marginBottom="5">
         <TrustImage
           {...imageProps}
           src={thumbnail}
